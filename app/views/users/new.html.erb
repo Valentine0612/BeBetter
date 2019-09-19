@@ -1,0 +1,18 @@
+
+<% provide(:title, 'Sign up') %>
+<div class="row">
+<div class="col-md-3">
+</div>
+  <div class="col-md-6 col-md-offset-3">
+  <h1>Регистрация</h1>
+    <%= bootstrap_form_for(@user) do |f| %>
+      <%= f.text_field :name, autofocus: true, label: "Имя", class: 'form-control' %>
+      <%= f.email_field :email, label: "Email", class: 'form-control' %>
+      <%= f.password_field :password, label: "Пароль", class: 'form-control' %>
+      <%= f.password_field :password_confirmation, label: "Подтверждение пароля", class: 'form-control' %>
+      <%= f.submit "Создать", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>

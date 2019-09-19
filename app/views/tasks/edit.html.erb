@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <%= bootstrap_form_for(@task, local: true) do |f| %>
+        <div class="field">
+        <%= f.text_field :title, autofocus: true, label: "Название" %>
+        </div>
+
+        <div class="field">
+        <%= f.text_area :text, label: "Описание" %>
+        </div>
+
+        <div class="actions">
+          <%= f.primary "Обновить" %>
+          <%= link_to('Назад',tasks_path, class: "btn btn-dark" )%>
+        </div>
+      <% end %>
+      <hr>
+      <% @task.comments.each do |comment| %>
+       <div class="card">
+        <div class="card-header">
+          <%= comment.commenter %>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= comment.body %></p>
+        </div>
+        </div>
+        <%= link_to 'Удалить', [comment.task, comment],
+          method: :delete%>
+      <% end %>
+      <br>
+      <%= bootstrap_form_for([@task, @task.comments.build], local: true) do |f| %>
+        <div class="field">
+        <%= f.text_field :commenter, autofocus: true, label: "Имя" %>
+        </div>
+
+        <div class="field">
+        <%= f.text_area :body, label: "Комментарий" %>
+        </div>
+
+        <div class="actions">
+          <%= f.primary "Добавить" %>
+        </div>
+      <% end %>
+      <br>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+</div>
