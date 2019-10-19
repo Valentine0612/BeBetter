@@ -5,7 +5,7 @@ ruby '2.5.3'
 
 gem 'bcrypt'
 
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem "bootstrap_form", ">= 4.0.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
