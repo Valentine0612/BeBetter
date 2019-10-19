@@ -4,26 +4,26 @@
       <th scope="col">Создано</th>
       <th scope="col">Название</th>
       <th scope="col">Описание</th>
-      <th scope="col">Обновлено</th>
-      <%# <th scope="col"></th> %>
+      <th scope="col">Завершить</th>
+      <th scope="col">Пользователь</th>
       <th scope="col">Действия</th>
-      <%# <th scope="col"></th> %>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
       <% @tasks.each do |task| %>
         <tr>
-          <td><%= task.created_at.strftime('%d.%m') %></td>
+          <td><%= task.created_at.strftime('%d.%m.%y') %></td>
           <td><%= task.title %></td>   
           <td><%= task.text %></td>
-          <td><%= task.updated_at.strftime('%d.%m') %></td>
-          <%# <td><%= link_to 'Просмотр', task_path(task) %></td> 
+          <td id="end"><%= task.date_finish.strftime('%d.%m.%y') %></td>
+          <td><%= link_to(task.user.name, task_path(task)) %></td> 
+          <% if current_user?(task.user)%>
           <td><%= link_to 'Редактировать', edit_task_path(task) %></td>
-          <%# <td><%= link_to 'Выполнено', task_path(task),
+          <td><%= link_to 'Выполнено', task_path(task),
             method: :delete%></td>
+          <%end%>
         </tr>
       <% end %>
-    </tr>
   </tbody>
 </table>

@@ -1,0 +1,17 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <div class="col-md-4">
+    <section class="stats">
+    <h3><%= @title %></h3>
+      <% if @users.any? %>
+        <div class="user_avatars">
+        <ul>
+           <% @users.each do |user| %>
+            <li><%= link_to user.name, user %></li>
+          <% end %>
+        </ul>
+        </div>
+      <% end %>
+    </section>
+  </div>
+</div>

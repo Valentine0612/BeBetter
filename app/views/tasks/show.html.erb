@@ -14,23 +14,25 @@
         </div>
       </div>
       <hr>
-      <% @task.comments.each do |comment| %>
-       <div class="card">
-        <div class="card-header">
-          <%= comment.commenter %>
-        </div>
-        <div class="card-body">
-          <p class="card-text"><%= comment.body %></p>
-        </div>
-        </div>
-        <%= link_to 'Удалить', [comment.task, comment],
+      <div class="comments">
+        <% @task.comments.each do |comment| %>
+        <p class="font-weight-bold">
+        <%= link_to('@'+comment.user.name, user_path(comment.user_id) ) %>:
+        </p>
+        <p><%= comment.body %></p>
+        <div class="link">
+          <% if current_user?(comment.user)%>
+            <%= link_to 'удалить', [comment.task, comment],
           method: :delete%>
-      <% end %>
+          <%end%>
+        </div>
+          <hr>
+        <% end %>
+
+      </div>
+
       <br>
       <%= bootstrap_form_for([@task, @task.comments.build], local: true) do |f| %>
-        <div class="field">
-        <%= f.text_field :commenter, autofocus: true, label: "Имя" %>
-        </div>
 
         <div class="field">
         <%= f.text_area :body, label: "Комментарий" %>
@@ -38,7 +40,7 @@
 
         <div class="actions">
           <%= f.primary "Добавить" %>
-          <%= link_to('Назад',tasks_path, class: "btn btn-dark" )%>
+          <%= link_to('Назад',user_path(current_user), class: "btn btn-dark" )%>
         </div>
       <% end %>
       <br>

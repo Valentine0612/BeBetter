@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :logged_in_user, only: [:new ,:create]
   def new
   end
 
@@ -14,5 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    log_out
+    redirect_to root_url
   end
 end

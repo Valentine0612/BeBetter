@@ -9,7 +9,9 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
+ *= require simple_calendar
  */
+ 
 
  @import "bootstrap";
  @mixin box_sizing {
@@ -26,4 +28,27 @@
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+.table{
+  font-size: 13px;
+  text-align: center;
+}
+#end{
+  background-color: rgba(255, 226, 220, 0.822);
+  color: red;
+}
+
+.comments p{
+  display: inline;
+}
+.comments a{
+  display: inline;
+  color: rgb(0, 0, 0);
+}
+.link a{
+  color: rgb(100, 100, 100) !important;
+}
+.link{
+  display: inline;
+  margin-left: 85%;
 }
